@@ -14,6 +14,7 @@ export default function Iphone15Pro({
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
+      <g filter="url(#outerShadow)">
       <path
         d="M2 73C2 32.6832 34.6832 0 75 0H357C397.317 0 430 32.6832 430 73V809C430 849.317 397.317 882 357 882H75C34.6832 882 2 849.317 2 809V73Z"
         className="fill-[#E5E5E5] dark:fill-[#404040]"
@@ -37,6 +38,8 @@ export default function Iphone15Pro({
       <path
         d="M6 74C6 35.3401 37.3401 4 76 4H356C394.66 4 426 35.3401 426 74V808C426 846.66 394.66 878 356 878H76C37.3401 878 6 846.66 6 808V74Z"
         className="fill-white dark:fill-[#262626]"
+        stroke="url(#frameInnerStroke)"
+        strokeWidth="0.8"
       />
       <path
         opacity="0.5"
@@ -46,7 +49,10 @@ export default function Iphone15Pro({
       <path
         d="M21.25 75C21.25 44.2101 46.2101 19.25 77 19.25H355C385.79 19.25 410.75 44.2101 410.75 75V807C410.75 837.79 385.79 862.75 355 862.75H77C46.2101 862.75 21.25 837.79 21.25 807V75Z"
         className="fill-[#E5E5E5] dark:fill-[#404040]"
+        stroke="url(#frameStroke)"
+        strokeWidth="1.2"
       />
+      </g>
 
       {/* Default background when no image/video */}
       {!src && !videoSrc && (
@@ -59,6 +65,7 @@ export default function Iphone15Pro({
           ry="55.75"
           fill="#000000"
           className="dark:fill-[#000000]"
+          filter="url(#screenInner)"
         />
       )}
 
@@ -106,7 +113,29 @@ export default function Iphone15Pro({
         className="fill-[#E5E5E5] dark:fill-[#404040]"
       />
 
+      {/* Crisp inner stroke */}
+      <rect x="21.25" y="19.25" width="389.5" height="843.5" rx="55.75" ry="55.75" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="1" pointerEvents="none" />
+
       <defs>
+        <filter id="outerShadow" x="-50" y="-50" width="533" height="982" colorInterpolationFilters="sRGB">
+          <feDropShadow dx="0" dy="18" stdDeviation="22" floodColor="rgba(0,0,0,0.35)"/>
+          <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="rgba(0,0,0,0.18)"/>
+        </filter>
+        <filter id="screenInner" x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+          <feOffset dy="1"/>
+          <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="innerShadow"/>
+          <feColorMatrix in="innerShadow" type="matrix" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0   0 0 0 0.35 0"/>
+          <feBlend in="SourceGraphic"/>
+        </filter>
+        <linearGradient id="frameStroke" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="rgba(255,255,255,0.6)"/>
+          <stop offset="100%" stopColor="rgba(0,0,0,0.2)"/>
+        </linearGradient>
+        <linearGradient id="frameInnerStroke" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="rgba(255,255,255,0.9)"/>
+          <stop offset="100%" stopColor="rgba(0,0,0,0.15)"/>
+        </linearGradient>
         <clipPath id="roundedCorners">
           <rect
             x="21.25"
