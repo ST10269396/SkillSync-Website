@@ -33,17 +33,17 @@ export function ProblemSolutionSection() {
               <div>
                 <div className="text-sm uppercase tracking-wide text-primary mb-2">Problems</div>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• Redundant training - duplicated effort without central tracking</li>
-                  <li>• Misaligned learning - hard to link to business objectives</li>
-                  <li>• Poor retention - growth feels undervalued</li>
+                  <li>• Training gets repeated because there’s no shared tracker</li>
+                  <li>• Learning plans don’t line up with business goals</li>
+                  <li>• People leave because growth doesn’t feel valued</li>
                 </ul>
               </div>
               <div className="md:border-l md:pl-6 border-border">
                 <div className="text-sm uppercase tracking-wide text-primary mb-2">Solutions</div>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• Centralized skill tracking and audit trails</li>
-                  <li>• Objectives mapped to skills, milestones, and outcomes</li>
-                  <li>• Recognition, levels, and streaks to boost engagement</li>
+                  <li>• One place to track every skill and change</li>
+                  <li>• Link goals to skills and milestones you can measure</li>
+                  <li>• Celebrate progress with levels and activity streaks</li>
                 </ul>
               </div>
             </div>
@@ -55,17 +55,17 @@ export function ProblemSolutionSection() {
               <div>
                 <div className="text-sm uppercase tracking-wide text-primary mb-2">Problems</div>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• Career connection unclear - linking learning to advancement</li>
-                  <li>• Progress hard to see - little visibility day to day</li>
-                  <li>• Recognition gaps - efforts go unnoticed</li>
+                  <li>• Hard to tell how learning helps your career</li>
+                  <li>• Daily progress is tough to notice</li>
+                  <li>• Efforts get missed and unappreciated</li>
                 </ul>
               </div>
               <div className="md:border-l md:pl-6 border-border">
                 <div className="text-sm uppercase tracking-wide text-primary mb-2">Solutions</div>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• Career milestones tied to skills and techniques</li>
-                  <li>• Visual dashboards, diary entries, and artifacts</li>
-                  <li>• Comments, levels, and activity streaks for motivation</li>
+                  <li>• Clear milestones linked to real skills</li>
+                  <li>• Simple dashboards, diaries, and uploads</li>
+                  <li>• Feedback, levels, and streaks to stay motivated</li>
                 </ul>
               </div>
             </div>
