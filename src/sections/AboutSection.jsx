@@ -36,7 +36,9 @@ export function AboutSection() {
 
         {/* Developers */}
         <div className="max-w-6xl mx-auto mt-14">
-          <h3 className="text-2xl md:text-3xl font-bold mb-4 text-grad-blue-amber text-center">About the Developers</h3>
+          <div className="flex justify-center">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-grad-blue-amber text-center inline-block">About the Developers</h3>
+          </div>
           <p className="text-muted-foreground text-center max-w-3xl mx-auto mb-8">
             We’re a small, hands‑on crew. We like building real things fast, getting feedback early, and polishing the
             details. Most of all, we care that SkillSync feels great to use — clear, quick, and helpful.
@@ -44,7 +46,10 @@ export function AboutSection() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-card/60 border border-border rounded-xl p-6">
-              <a href="https://github.com/ThePedalingDev" className="font-semibold hover:underline">Markus Fourie</a>
+              <div className="flex items-center gap-3 mb-1">
+                <img src="/images/pfp/Markus.png" alt="Markus Fourie" className="w-16 h-16 rounded-full object-cover border border-border shadow-sm" />
+                <a href="https://github.com/ThePedalingDev" className="font-semibold hover:underline">Markus Fourie</a>
+              </div>
               <p className="text-xs text-muted-foreground mt-1">Front-End Lead</p>
               <p className="text-sm text-muted-foreground mt-2">Oversees UI/UX implementation, ensures consistency, and reviews front‑end PRs. Strong focus on
                 React + Tailwind craft and performance.
@@ -52,7 +57,10 @@ export function AboutSection() {
             </div>
 
             <div className="bg-card/60 border border-border rounded-xl p-6">
-              <a href="https://github.com/Vac-Dev" className="font-semibold hover:underline">Kyle Nel</a>
+              <div className="flex items-center gap-3 mb-1">
+                <img src="/images/pfp/Kyle.png" alt="Kyle Nel" className="w-16 h-16 rounded-full object-cover border border-border shadow-sm" />
+                <a href="https://github.com/Vac-Dev" className="font-semibold hover:underline">Kyle Nel</a>
+              </div>
               <p className="text-xs text-muted-foreground mt-1">Back-End Lead</p>
               <p className="text-sm text-muted-foreground mt-2">Designs APIs and data models, ensures performance, and manages database interactions with a
                 reliability-first mindset.
@@ -60,7 +68,10 @@ export function AboutSection() {
             </div>
 
             <div className="bg-card/60 border border-border rounded-xl p-6">
-              <a href="https://github.com/TheDevTrekker" className="font-semibold hover:underline">Derik Korf</a>
+              <div className="flex items-center gap-3 mb-1">
+                <img src="/images/pfp/Derik.png" alt="Derik Korf" className="w-16 h-16 rounded-full object-cover border border-border shadow-sm" />
+                <a href="https://github.com/TheDevTrekker" className="font-semibold hover:underline">Derik Korf</a>
+              </div>
               <p className="text-xs text-muted-foreground mt-1">Requirements & QA Lead</p>
               <p className="text-sm text-muted-foreground mt-2">Gathers requirements, writes test cases, and manages quality assurance - keeping delivery aligned
                 to user needs and acceptance criteria.
@@ -68,7 +79,10 @@ export function AboutSection() {
             </div>
 
             <div className="bg-card/60 border border-border rounded-xl p-6">
-              <a href="https://github.com/ShawnDuPreez" className="font-semibold hover:underline">Shawn Du Preez</a>
+              <div className="flex items-center gap-3 mb-1">
+                <img src="/images/pfp/Shawn.png" alt="Shawn Du Preez" className="w-16 h-16 rounded-full object-cover border border-border shadow-sm" />
+                <a href="https://github.com/ShawnDuPreez" className="font-semibold hover:underline">Shawn Du Preez</a>
+              </div>
               <p className="text-xs text-muted-foreground mt-1">Architecture & Design Lead</p>
               <p className="text-sm text-muted-foreground mt-2">Defines system architecture, ensures scalability, performance, and security - guiding technical
                 decisions and cohesive design.
