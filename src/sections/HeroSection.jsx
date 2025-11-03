@@ -7,6 +7,7 @@ import Iphone15Pro from "@/components/Iphone15Pro.jsx"
 
 export function HeroSection() {
   const [downloadCta, setDownloadCta] = useState("default")
+  const [playDemo, setPlayDemo] = useState(false)
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background via-accent/5 to-background pt-24 md:pt-28 relative overflow-hidden">
       <AnimatedBackground />
@@ -50,7 +51,7 @@ export function HeroSection() {
 
 
           <div className="flex gap-4 justify-center flex-wrap mb-12">
-            <a href="#iphone-demo">
+            <a href="#iphone-demo" onClick={() => setPlayDemo(true)}>
             <Button size="lg" variant="gPrimary" className="gap-2 border-0 px-8 py-6 text-lg font-semibold hover:scale-105 transition-transform shadow-xl">
               <Play className="h-5 w-5" />
               View Demo
@@ -120,7 +121,7 @@ export function HeroSection() {
                 {/* Phone mockup */}
                 <div className="bg-card rounded-3xl w-full aspect-[9/16] flex items-center justify-center text-card-foreground text-lg relative shadow-2xl backdrop-blur-sm hover:scale-105 transition-transform duration-300">
                   <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-white/10 to-transparent dark:from-white/5" />
-                  <Iphone15Pro className="w-full h-auto drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]" />
+                  <Iphone15Pro className="w-full h-auto drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]" videoSrc={playDemo ? "/images/mockups/iPhoneMock.mp4" : undefined} />
                   <div className="pointer-events-none absolute -bottom-5 inset-x-10 h-8 rounded-full bg-black/40 blur-2xl opacity-50" />
                 </div>
               </div>
