@@ -81,7 +81,7 @@ export function Footer() {
             <h4 className="font-semibold mb-4 text-grad-blue-amber">Connect</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="hover:underline hover:text-primary transition-colors">GitHub</a>
+                <a href="https://github.com/ST10298302/SkillSync.git" className="hover:underline hover:text-primary transition-colors">GitHub</a>
               </li>
               <li>
                 <a href="#" className="hover:underline hover:text-primary transition-colors">YouTube</a>

@@ -1,10 +1,12 @@
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Download, Play, Sparkles, TrendingUp, Users } from "lucide-react"
 import { AnimatedBackground } from "@/components/AnimatedBackground"
 import Iphone15Pro from "@/components/Iphone15Pro.jsx"
 
 export function HeroSection() {
+  const [downloadCta, setDownloadCta] = useState("default")
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background via-accent/5 to-background pt-24 md:pt-28 relative overflow-hidden">
       <AnimatedBackground />
@@ -54,9 +56,40 @@ export function HeroSection() {
               View Demo
             </Button>
             </a>
-            <Button size="lg" variant="outline" className="gap-2 border-2 px-8 py-6 text-lg font-semibold hover:scale-105 transition-transform hover:bg-primary/10">
+            <Button
+              size="lg"
+              variant="outline"
+              className="gap-2 border-2 px-8 py-6 text-lg font-semibold hover:scale-105 transition-transform hover:bg-primary/10 overflow-hidden"
+              onClick={() => setDownloadCta("soon")}
+            >
               <Download className="h-5 w-5" />
-              Download App
+              <div className="relative h-[1.2em] overflow-hidden">
+                <AnimatePresence mode="wait">
+                  {downloadCta === "default" ? (
+                    <motion.span
+                      key="download"
+                      initial={{ y: 16, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -16, opacity: 0 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 28 }}
+                      className="block leading-none"
+                    >
+                      Download App
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="soon"
+                      initial={{ y: 16, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -16, opacity: 0 }}
+                      transition={{ type: "spring", stiffness: 500, damping: 24 }}
+                      className="block leading-none"
+                    >
+                      Coming soon
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </div>
             </Button>
           </div>
         </motion.div>
