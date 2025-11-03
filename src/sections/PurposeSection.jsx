@@ -1,5 +1,6 @@
  
 import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
 
 export function PurposeSection() {
   return (
@@ -11,16 +12,35 @@ export function PurposeSection() {
 
       <div className="w-full px-(--container-padding) relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-grad-blue-amber">
+          <motion.h2
+            className="text-5xl md:text-6xl font-bold mb-6 text-grad-blue-amber"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             Why SkillSync?
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            SkillSync helps individuals and organizations align learning with tangible career growth by connecting skill development to clear outcomes.
-          </p>
-          <div className="flex justify-center gap-4">
+          </motion.h2>
+          <motion.p
+            className="text-xl text-muted-foreground mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+          >
+            SkillSync makes learning easy to follow and simple to measure. It connects daily skill practice to clear
+            outcomes, so students and tutors can see progress and plan the next step with confidence.
+          </motion.p>
+          <motion.div
+            className="flex justify-center gap-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+          >
             <a href="#problem-solution"><Button size="lg" className="bg-linear-to-r from-primary to-accent text-white">See How It Works</Button></a>
             <a href="#screenshots"><Button size="lg" variant="outline" className="border-2">View Screenshots</Button></a>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

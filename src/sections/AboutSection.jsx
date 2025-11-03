@@ -1,16 +1,22 @@
+import { motion } from "framer-motion"
+
 export function AboutSection() {
   return (
     <section id="about" className="py-20 bg-background relative overflow-hidden scroll-offset-nav">
       <div className="w-full px-(--container-padding)">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-grad-blue-amber">About the Company</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <motion.h2 className="text-4xl md:text-5xl font-bold mb-4 text-grad-blue-amber"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+            About the Company
+          </motion.h2>
+          <motion.p className="text-xl text-muted-foreground max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1, duration: 0.5 }}>
             SkillSync was developed for a tutoring company that manages many students and lecturers across different
             subjects and campuses. The platform centralizes skills, progress, and milestones so tutors can quickly
             understand where students are, what support they need, and how learning maps to outcomes. For teams, it
             provides consistent tracking, clearer accountability, and actionable insights that scale from individual
             classes to entire programs.
-          </p>
+          </motion.p>
         </div>
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">

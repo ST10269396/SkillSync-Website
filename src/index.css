@@ -10,17 +10,18 @@
   --card-foreground: oklch(0 0 0);
   --popover: oklch(0.9911 0 0);
   --popover-foreground: oklch(0 0 0);
-  --primary: oklch(0.6132 0.2294 291.7437);
-  --primary-foreground: oklch(1.0000 0 0);
+  /* Punchier light-mode accents */
+  --primary: oklch(0.63 0.20 262);           /* vibrant indigo */
+  --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.9540 0.0063 255.4755);
   --secondary-foreground: oklch(0.1344 0 0);
   --muted: oklch(0.9702 0 0);
-  --muted-foreground: oklch(0.4386 0 0);
-  --accent: oklch(0.9393 0.0288 266.3680);
-  --accent-foreground: oklch(0.5445 0.1903 259.4848);
+  --muted-foreground: oklch(0.40 0 0);       /* slightly deeper for contrast */
+  --accent: oklch(0.78 0.15 150);            /* emerald */
+  --accent-foreground: oklch(0.18 0 0);
   --destructive: oklch(0.6290 0.1902 23.0704);
   --destructive-foreground: oklch(1.0000 0 0);
-  --border: oklch(0.9300 0.0094 286.2156);
+  --border: oklch(0.88 0.01 286);            /* higher contrast borders */
   --input: oklch(0.9401 0 0);
   --ring: oklch(0 0 0);
   --chart-1: oklch(0.7459 0.1483 156.4499);
@@ -48,11 +49,11 @@
   --shadow-color: hsl(0 0% 0%);
   --shadow-2xs: 0px 2px 3px 0px hsl(0 0% 0% / 0.08);
   --shadow-xs: 0px 2px 3px 0px hsl(0 0% 0% / 0.08);
-  --shadow-sm: 0px 2px 3px 0px hsl(0 0% 0% / 0.16), 0px 1px 2px -1px hsl(0 0% 0% / 0.16);
-  --shadow: 0px 2px 3px 0px hsl(0 0% 0% / 0.16), 0px 1px 2px -1px hsl(0 0% 0% / 0.16);
-  --shadow-md: 0px 2px 3px 0px hsl(0 0% 0% / 0.16), 0px 2px 4px -1px hsl(0 0% 0% / 0.16);
-  --shadow-lg: 0px 2px 3px 0px hsl(0 0% 0% / 0.16), 0px 4px 6px -1px hsl(0 0% 0% / 0.16);
-  --shadow-xl: 0px 2px 3px 0px hsl(0 0% 0% / 0.16), 0px 8px 10px -1px hsl(0 0% 0% / 0.16);
+  --shadow-sm: 0 2px 6px hsl(0 0% 0% / 0.10), 0 1px 3px hsl(0 0% 0% / 0.06);
+  --shadow:   0 4px 10px hsl(0 0% 0% / 0.12), 0 2px 6px hsl(0 0% 0% / 0.08);
+  --shadow-md:0 6px 16px hsl(0 0% 0% / 0.14), 0 3px 10px hsl(0 0% 0% / 0.10);
+  --shadow-lg:0 10px 24px hsl(0 0% 0% / 0.16), 0 6px 16px hsl(0 0% 0% / 0.12);
+  --shadow-xl:0 16px 40px hsl(0 0% 0% / 0.18), 0 8px 20px hsl(0 0% 0% / 0.14);
   --shadow-2xl: 0px 2px 3px 0px hsl(0 0% 0% / 0.40);
   --tracking-normal: -0.025em;
   --spacing: 0.27rem;
@@ -143,6 +144,57 @@
   --shadow-xl: 0px 2px 3px 0px hsl(0 0% 0% / 0.16), 0px 8px 10px -1px hsl(0 0% 0% / 0.16);
   --shadow-2xl: 0px 2px 3px 0px hsl(0 0% 0% / 0.40);
 }
+
+/* Light mode visual polish */
+.light {
+  --bg-gradient-start: #f7f8fb; /* soft grey-blue */
+  --bg-gradient-end: #eef1f7;   /* slightly deeper */
+  --ring: var(--primary);       /* stronger focus color in light mode */
+}
+
+.light body {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgb(24 24 27 / 0.05) 1px, transparent 1px),
+    linear-gradient(180deg, var(--bg-gradient-start), var(--bg-gradient-end));
+  background-size: 22px 22px, 100% 100%;
+  background-attachment: fixed;
+}
+
+/* Elevate cards a touch more in light mode */
+.light .rounded-lg {
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.06), 0 2px 8px rgb(0 0 0 / 0.04);
+}
+
+/* Light-mode accents that pop */
+.light a {
+  text-decoration-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
+}
+.light main a:hover,
+.light footer a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+/* Headings with gradient get subtle lift in light mode */
+.light .text-grad-blue-amber {
+  text-shadow: 0 1px 0 rgba(255,255,255,.6), 0 2px 8px rgba(31,41,55,.12);
+}
+
+/* Buttons: make outlined buttons stand out more in light mode */
+.light .border-2 {
+  border-color: color-mix(in oklab, var(--color-primary) 30%, var(--color-border));
+}
+.light .hover\:bg-primary\/10:hover {
+  background-color: color-mix(in oklab, var(--color-primary) 12%, white);
+}
+
+/* Scrollbar in light mode */
+.light ::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--color-primary) 60%, #9ca3af);
+}
+
+/* Do not underline links in the nav in light mode */
+.light nav a:hover { text-decoration: none; }
 
 @theme inline {
   --color-background: var(--background);

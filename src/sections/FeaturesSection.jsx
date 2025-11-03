@@ -44,7 +44,7 @@ export function FeaturesSection() {
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
                 </div>
 
-                <CardHeader>
+                <CardHeader className="text-center">
                   <div className="mb-4 mx-auto w-12 h-12 grid place-items-center rounded-lg bg-primary/10 overflow-hidden">
                     <div className="transition-transform duration-300 group-hover:scale-110 will-change-transform">{feature.icon}</div>
                   </div>
@@ -69,6 +69,31 @@ export function FeaturesSection() {
               </Card>
             </motion.div>
           ))}
+        </div>
+
+        {/* Capabilities callout */}
+        <div className="max-w-7xl mx-auto mt-10">
+          <div className="text-center mb-4">
+            <h3 className="text-xl font-semibold text-grad-blue-amber">What learners and tutors can record</h3>
+            <p className="text-sm text-muted-foreground">Make learning rich and easy to follow with context</p>
+          </div>
+          <div className="flex flex-wrap gap-2 justify-center">
+            {[
+              'Diary entries',
+              'Resources',
+              'Artifacts',
+              'Techniques',
+              'Problems',
+              'Solutions',
+              'Comments',
+              'Skill levels',
+              'Activity streaks'
+            ].map((t) => (
+              <span key={t} className="px-3 py-1 rounded-full border border-primary/20 bg-card/60 text-xs text-foreground">
+                {t}
+              </span>
+            ))}
+          </div>
         </div>
         {/* Bottom spacer to maintain consistent background without visual fade */}
         <div className="h-8" />
