@@ -32,8 +32,8 @@ export function AboutSection() {
         <div className="max-w-6xl mx-auto mt-14">
           <h3 className="text-2xl md:text-3xl font-bold mb-4 text-grad-blue-amber text-center">About the Developers</h3>
           <p className="text-muted-foreground text-center max-w-3xl mx-auto mb-8">
-            We’re a small, focused team that blends product thinking with strong engineering practices. We ship
-            production-ready features quickly, iterate with feedback, and keep the user experience front and center.
+            We’re a small, hands‑on crew. We like building real things fast, getting feedback early, and polishing the
+            details. Most of all, we care that SkillSync feels great to use — clear, quick, and helpful.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

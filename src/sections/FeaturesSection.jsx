@@ -45,7 +45,9 @@ export function FeaturesSection() {
                 </div>
 
                 <CardHeader>
-                  <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{feature.icon}</div>
+                  <div className="mb-4 mx-auto w-12 h-12 grid place-items-center rounded-lg bg-primary/10 overflow-hidden">
+                    <div className="transition-transform duration-300 group-hover:scale-110 will-change-transform">{feature.icon}</div>
+                  </div>
                   <CardTitle className="group-hover:text-primary transition-colors">{feature.title}</CardTitle>
                   <CardDescription className="text-muted-foreground">{feature.description}</CardDescription>
                 </CardHeader>
