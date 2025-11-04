@@ -1,13 +1,33 @@
 import { motion, AnimatePresence } from "framer-motion"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Download, Play, Sparkles, TrendingUp, Users } from "lucide-react"
 import { AnimatedBackground } from "@/components/AnimatedBackground"
-import Iphone15Pro from "@/components/Iphone15Pro.jsx"
+import { MobileVideoModal } from "@/components/MobileVideoModal"
 
 export function HeroSection() {
   const [downloadCta, setDownloadCta] = useState("default")
   const [playDemo, setPlayDemo] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [showMobileModal, setShowMobileModal] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const handleViewDemo = (e) => {
+    if (isMobile) {
+      e.preventDefault()
+      setShowMobileModal(true)
+    } else {
+      setPlayDemo(true)
+    }
+  }
   return (
     <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background via-accent/5 to-background pt-24 md:pt-28 relative overflow-x-hidden">
       <AnimatedBackground />
@@ -51,12 +71,15 @@ export function HeroSection() {
 
 
           <div className="flex gap-4 justify-center flex-wrap mb-12">
-            <a href="#iphone-demo" onClick={() => setPlayDemo(true)}>
-            <Button size="lg" variant="gPrimary" className="gap-2 border-0 px-8 py-6 text-lg font-semibold hover:scale-105 transition-transform shadow-xl">
+            <Button 
+              size="lg" 
+              variant="gPrimary" 
+              className="gap-2 border-0 px-8 py-6 text-lg font-semibold hover:scale-105 transition-transform shadow-xl"
+              onClick={handleViewDemo}
+            >
               <Play className="h-5 w-5" />
               View Demo
             </Button>
-            </a>
             <Button
               size="lg"
               variant="outline"
@@ -114,15 +137,34 @@ export function HeroSection() {
                 <span className="px-2 py-1 rounded-full bg-card/70 border border-primary/20 shadow-sm">Notifications</span>
               </div>
 
-              {/* Phone column */}
-              <div className="relative mx-auto w-full flex justify-center items-start p-8 md:p-12">
-                <div className="relative max-w-[220px] md:max-w-[320px] lg:max-w-[380px] xl:max-w-[420px] iphone-mockup-container">
+              {/* Phone column - Desktop only */}
+              <div className="hidden md:block relative mx-auto w-full flex justify-center items-start p-8 md:p-12">
+                <div className="relative max-w-[320px] lg:max-w-[380px] xl:max-w-[420px]">
                   {/* Glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-3xl blur-3xl opacity-30 animate-pulse -z-10"></div>
-                  {/* Phone mockup */}
-                  <div className="bg-card rounded-3xl w-full flex items-center justify-center text-card-foreground text-lg relative shadow-2xl backdrop-blur-sm hover:scale-105 transition-transform duration-300 overflow-visible origin-center">
-                    <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-white/10 to-transparent dark:from-white/5" />
-                    <Iphone15Pro className="w-full h-auto drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]" videoSrc={playDemo ? "/images/mockups/iPhoneMock.mp4" : undefined} />
+                  {/* Phone mockup with daisyUI - exact structure from website */}
+                  <div className="relative shadow-2xl hover:scale-105 transition-transform duration-300 overflow-visible origin-center">
+                    <div className="mockup-phone">
+                      <div className="mockup-phone-camera"></div>
+                      <div className="mockup-phone-display text-white grid place-content-center bg-neutral-900 relative">
+                        {playDemo ? (
+                          <video
+                            className="w-full h-full object-cover absolute inset-0"
+                            src="/images/mockups/iPhoneMock.mp4"
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            webkit-playsinline="true"
+                          />
+                        ) : (
+                          <div className="text-center relative z-10">
+                            <Play className="w-16 h-16 mx-auto mb-4 text-primary opacity-50" />
+                            <p className="text-muted-foreground text-sm">Click "View Demo" to play</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                     <div className="pointer-events-none absolute -bottom-5 inset-x-10 h-8 rounded-full bg-black/40 blur-2xl opacity-50" />
                   </div>
                 </div>
@@ -148,6 +190,13 @@ export function HeroSection() {
         {/* Bottom fade to blend into next section */}
         <div className="section-fade-bottom" />
       </div>
+
+      {/* Mobile Video Modal */}
+      <MobileVideoModal 
+        isOpen={showMobileModal} 
+        onClose={() => setShowMobileModal(false)} 
+        videoSrc="/images/mockups/iPhoneMock.mp4"
+      />
     </section>
   )
 }
