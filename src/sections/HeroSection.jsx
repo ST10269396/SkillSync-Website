@@ -54,7 +54,13 @@ export function HeroSection() {
               size="lg" 
               variant="gPrimary" 
               className="gap-2 border-0 px-8 py-6 text-lg font-semibold hover:scale-105 transition-transform shadow-xl"
-              onClick={() => setPlayDemo(true)}
+              onClick={() => {
+                setPlayDemo(true)
+                const phoneMockup = document.getElementById('phone-mockup')
+                if (phoneMockup) {
+                  phoneMockup.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                }
+              }}
             >
               <Play className="h-5 w-5" />
               View Demo
@@ -117,7 +123,7 @@ export function HeroSection() {
               </div>
 
               {/* Phone column */}
-              <div className="flex relative mx-auto w-full justify-center items-start p-4 md:p-12">
+              <div id="phone-mockup" className="flex relative mx-auto w-full justify-center items-start p-4 md:p-12">
                 <div className="mockup-phone">
                   <div className="mockup-phone-camera"></div>
                   <div className="mockup-phone-display text-white grid place-content-center bg-neutral-900 relative">
