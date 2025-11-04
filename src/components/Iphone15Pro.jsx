@@ -102,7 +102,10 @@ export default function Iphone15Pro({
               overflow: 'hidden',
               borderRadius: '55.75px',
               position: 'relative',
-              boxSizing: 'border-box'
+              boxSizing: 'border-box',
+              margin: 0,
+              padding: 0,
+              display: 'block'
             }}
           >
             <video
@@ -111,11 +114,12 @@ export default function Iphone15Pro({
                 height: '100%',
                 objectFit: 'cover',
                 display: 'block',
-                minWidth: '100%',
-                minHeight: '100%',
-                maxWidth: '100%',
-                maxHeight: '100%',
-                boxSizing: 'border-box'
+                margin: 0,
+                padding: 0,
+                boxSizing: 'border-box',
+                position: 'absolute',
+                top: 0,
+                left: 0
               }}
               src={videoSrc}
               autoPlay

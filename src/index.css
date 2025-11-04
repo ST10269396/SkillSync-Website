@@ -408,3 +408,45 @@ html, body, [class*="bg-"], [class*="text-"], [class*="border-"] {
 svg foreignObject {
   overflow: hidden !important;
 }
+
+/* Mobile-specific fixes for video scaling in SVG foreignObject */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari specific */
+  svg foreignObject {
+    transform: scale(1);
+    transform-origin: top left;
+  }
+  
+  svg foreignObject video {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: cover !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+  
+  svg foreignObject > div {
+    width: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+    overflow: hidden !important;
+  }
+}
+
+/* Additional mobile containment */
+@media (max-width: 768px) {
+  .iphone-mockup-container svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .iphone-mockup-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
