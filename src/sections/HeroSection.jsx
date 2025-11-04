@@ -9,7 +9,7 @@ export function HeroSection() {
   const [downloadCta, setDownloadCta] = useState("default")
   const [playDemo, setPlayDemo] = useState(false)
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background via-accent/5 to-background pt-24 md:pt-28 relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background via-accent/5 to-background pt-24 md:pt-28 relative overflow-x-hidden">
       <AnimatedBackground />
       
       {/* Background decorative elements */}
@@ -100,12 +100,12 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className="mt-12 flex justify-center pb-16"
+          className="mt-12 flex justify-center pb-16 overflow-visible"
         >
-          <div className="relative w-full max-w-7xl px-(--container-padding) scroll-offset-nav" id="iphone-demo">
-            <div className="grid grid-cols-1 md:grid-cols-[320px_auto_320px] items-center gap-8">
+          <div className="relative w-full max-w-7xl px-[var(--container-padding)] scroll-offset-nav overflow-visible" id="iphone-demo">
+            <div className="grid grid-cols-1 md:grid-cols-[320px_auto_320px] items-start gap-8 py-8 md:py-12 overflow-visible">
               {/* Left keywords */}
-              <div className="hidden md:flex flex-wrap justify-end gap-2 text-xs text-muted-foreground w-[320px]">
+              <div className="hidden md:flex flex-wrap justify-end gap-2 text-xs text-muted-foreground w-[320px] items-start pt-4">
                 <span className="px-2 py-1 rounded-full bg-card/70 border border-primary/20 shadow-sm">Skill Tracking</span>
                 <span className="px-2 py-1 rounded-full bg-card/70 border border-primary/20 shadow-sm">Tutor Insights</span>
                 <span className="px-2 py-1 rounded-full bg-card/70 border border-primary/20 shadow-sm">Milestones</span>
@@ -115,19 +115,21 @@ export function HeroSection() {
               </div>
 
               {/* Phone column */}
-              <div className="relative mx-auto max-w-[220px] md:max-w-[280px]">
-                {/* Glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-3xl blur-3xl opacity-30 animate-pulse"></div>
-                {/* Phone mockup */}
-                <div className="bg-card rounded-3xl w-full aspect-[9/16] flex items-center justify-center text-card-foreground text-lg relative shadow-2xl backdrop-blur-sm hover:scale-105 transition-transform duration-300">
-                  <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-white/10 to-transparent dark:from-white/5" />
-                  <Iphone15Pro className="w-full h-auto drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]" videoSrc={playDemo ? "/images/mockups/iPhoneMock.mp4" : undefined} />
-                  <div className="pointer-events-none absolute -bottom-5 inset-x-10 h-8 rounded-full bg-black/40 blur-2xl opacity-50" />
+              <div className="relative mx-auto w-full flex justify-center items-start p-8 md:p-12">
+                <div className="relative max-w-[220px] md:max-w-[320px] lg:max-w-[380px] xl:max-w-[420px] iphone-mockup-container">
+                  {/* Glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-3xl blur-3xl opacity-30 animate-pulse -z-10"></div>
+                  {/* Phone mockup */}
+                  <div className="bg-card rounded-3xl w-full flex items-center justify-center text-card-foreground text-lg relative shadow-2xl backdrop-blur-sm hover:scale-105 transition-transform duration-300 overflow-visible origin-center">
+                    <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-white/10 to-transparent dark:from-white/5" />
+                    <Iphone15Pro className="w-full h-auto drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]" videoSrc={playDemo ? "/images/mockups/iPhoneMock.mp4" : undefined} />
+                    <div className="pointer-events-none absolute -bottom-5 inset-x-10 h-8 rounded-full bg-black/40 blur-2xl opacity-50" />
+                  </div>
                 </div>
               </div>
 
               {/* Right keywords */}
-              <div className="hidden md:flex flex-wrap justify-start gap-2 text-xs text-muted-foreground w-[320px]">
+              <div className="hidden md:flex flex-wrap justify-start gap-2 text-xs text-muted-foreground w-[320px] items-start pt-4">
                 <span className="px-2 py-1 rounded-full bg-card/70 border border-primary/20 shadow-sm">Progress Diary</span>
                 <span className="px-2 py-1 rounded-full bg-card/70 border border-primary/20 shadow-sm">Analytics</span>
                 <span className="px-2 py-1 rounded-full bg-card/70 border border-primary/20 shadow-sm">Community</span>

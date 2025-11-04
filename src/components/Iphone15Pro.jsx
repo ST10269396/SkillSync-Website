@@ -88,9 +88,17 @@ export default function Iphone15Pro({
           width="389.5"
           height="843.5"
           clipPath="url(#roundedCorners)"
+          style={{ overflow: 'hidden', borderRadius: '55.75px' }}
         >
           <video
-            className="size-full object-cover"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              display: 'block',
+              overflow: 'hidden',
+              borderRadius: '55.75px'
+            }}
             src={videoSrc}
             autoPlay
             loop

@@ -390,3 +390,21 @@ html, body, [class*="bg-"], [class*="text-"], [class*="border-"] {
   bottom: 0;
   background: linear-gradient(to bottom, transparent, var(--color-background));
 }
+
+/* iPhone mockup video containment on mobile */
+.iphone-mockup-container {
+  overflow: hidden;
+  contain: layout style paint;
+}
+
+.iphone-mockup-container video {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+/* Ensure foreignObject in SVG respects boundaries on mobile */
+svg foreignObject {
+  overflow: hidden !important;
+}
