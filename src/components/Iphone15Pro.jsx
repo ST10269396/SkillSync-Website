@@ -44,10 +44,13 @@ export default function Iphone15Pro({
       const actualVideoHeight = videoAreaHeight * scaleY
 
       // Set on the video element directly for mobile browsers
-      video.style.width = `${actualVideoWidth}px`
-      video.style.height = `${actualVideoHeight}px`
-      video.style.maxWidth = `${actualVideoWidth}px`
-      video.style.maxHeight = `${actualVideoHeight}px`
+      // Make video slightly larger to account for transform shift
+      const scaleFactor = 1.06
+      video.style.width = `${actualVideoWidth * scaleFactor}px`
+      video.style.height = `${actualVideoHeight * scaleFactor}px`
+      video.style.maxWidth = `${actualVideoWidth * scaleFactor}px`
+      video.style.maxHeight = `${actualVideoHeight * scaleFactor}px`
+      video.style.objectPosition = 'left top'
     }
 
     // Wait for video element to be ready
@@ -196,6 +199,7 @@ export default function Iphone15Pro({
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
+                objectPosition: 'left top',
                 display: 'block',
                 margin: 0,
                 padding: 0,
