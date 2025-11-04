@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 export default function Iphone15Pro({
   width = 433,
   height = 882,
@@ -5,8 +7,88 @@ export default function Iphone15Pro({
   videoSrc,
   ...props
 }) {
+  const svgRef = useRef(null)
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    if (!videoSrc || !svgRef.current) return
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
+    
+    // Only apply explicit sizing on mobile devices
+    if (!isMobile) return
+
+    const updateVideoSize = () => {
+      const svg = svgRef.current
+      const video = videoRef.current
+      if (!svg || !video) return
+
+      // Get the actual rendered SVG dimensions
+      const svgRect = svg.getBoundingClientRect()
+      const svgWidth = svgRect.width
+      const svgHeight = svgRect.height
+
+      // Skip if SVG not yet rendered
+      if (svgWidth === 0 || svgHeight === 0) return
+
+      // Calculate the scale factor
+      const scaleX = svgWidth / width
+      const scaleY = svgHeight / height
+      
+      // The video area in SVG coordinates
+      const videoAreaWidth = 389.5
+      const videoAreaHeight = 843.5
+      
+      // Calculate actual rendered size of video area
+      const actualVideoWidth = videoAreaWidth * scaleX
+      const actualVideoHeight = videoAreaHeight * scaleY
+
+      // Set on the video element directly for mobile browsers
+      video.style.width = `${actualVideoWidth}px`
+      video.style.height = `${actualVideoHeight}px`
+      video.style.maxWidth = `${actualVideoWidth}px`
+      video.style.maxHeight = `${actualVideoHeight}px`
+    }
+
+    // Wait for video element to be ready
+    const init = () => {
+      if (videoRef.current && svgRef.current) {
+        updateVideoSize()
+      } else {
+        // Retry if not ready yet
+        setTimeout(init, 50)
+      }
+    }
+
+    // Initial update with delays to ensure DOM is ready
+    const timeout1 = setTimeout(init, 100)
+    const timeout2 = setTimeout(init, 300)
+    
+    // Update on resize
+    window.addEventListener('resize', updateVideoSize)
+    window.addEventListener('orientationchange', updateVideoSize)
+    
+    // Use ResizeObserver if available for better detection
+    let resizeObserver
+    if (svgRef.current && window.ResizeObserver) {
+      resizeObserver = new ResizeObserver(() => {
+        setTimeout(updateVideoSize, 10)
+      })
+      resizeObserver.observe(svgRef.current)
+    }
+
+    return () => {
+      window.removeEventListener('resize', updateVideoSize)
+      window.removeEventListener('orientationchange', updateVideoSize)
+      clearTimeout(timeout1)
+      clearTimeout(timeout2)
+      if (resizeObserver) resizeObserver.disconnect()
+    }
+  }, [videoSrc, width, height])
+
   return (
     <svg
+      ref={svgRef}
       width={width}
       height={height}
       viewBox={`0 0 ${width} ${height}`}
@@ -109,6 +191,7 @@ export default function Iphone15Pro({
             }}
           >
             <video
+              ref={videoRef}
               style={{
                 width: '100%',
                 height: '100%',
@@ -127,6 +210,9 @@ export default function Iphone15Pro({
               muted
               playsInline
               webkit-playsinline="true"
+              x5-playsinline="true"
+              x5-video-player-type="h5"
+              x5-video-player-fullscreen="false"
             />
           </div>
         </foreignObject>
