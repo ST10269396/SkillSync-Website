@@ -10,8 +10,10 @@ export default function Iphone15Pro({
       width={width}
       height={height}
       viewBox={`0 0 ${width} ${height}`}
+      preserveAspectRatio="xMidYMid meet"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={{ width: '100%', height: 'auto', maxWidth: '100%' }}
       {...props}
     >
       <g filter="url(#outerShadow)">
@@ -88,23 +90,41 @@ export default function Iphone15Pro({
           width="389.5"
           height="843.5"
           clipPath="url(#roundedCorners)"
-          style={{ overflow: 'hidden', borderRadius: '55.75px' }}
+          style={{ 
+            overflow: 'hidden'
+          }}
         >
-          <video
+          <div
+            xmlns="http://www.w3.org/1999/xhtml"
             style={{
               width: '100%',
               height: '100%',
-              objectFit: 'cover',
-              display: 'block',
               overflow: 'hidden',
-              borderRadius: '55.75px'
+              borderRadius: '55.75px',
+              position: 'relative',
+              boxSizing: 'border-box'
             }}
-            src={videoSrc}
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
+          >
+            <video
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                display: 'block',
+                minWidth: '100%',
+                minHeight: '100%',
+                maxWidth: '100%',
+                maxHeight: '100%',
+                boxSizing: 'border-box'
+              }}
+              src={videoSrc}
+              autoPlay
+              loop
+              muted
+              playsInline
+              webkit-playsinline="true"
+            />
+          </div>
         </foreignObject>
       )}
 
